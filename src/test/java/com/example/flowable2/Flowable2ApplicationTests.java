@@ -69,8 +69,8 @@ public class Flowable2ApplicationTests {
         RepositoryService repositoryService = processEngine.getRepositoryService();
 
         //部署
-        Deployment deployment = repositoryService.createDeployment().addClasspathResource("diagram/problem.bpmn")
-                .addClasspathResource("diagram/problem.png")
+        Deployment deployment = repositoryService.createDeployment().addClasspathResource("diagram/problem2.bpmn")
+                .addClasspathResource("diagram/problem2.png")
                 .name("问题跟踪流程").deploy();
 
         log.info(deployment.getName());
@@ -87,7 +87,7 @@ public class Flowable2ApplicationTests {
         RuntimeService runtimeService = processEngine.getRuntimeService();
 
         //根据流程定义的key创建流程启动的实例（key是xml对应process节点的ID属性或者ACT_RE_PROCDEF表中KYE_字段的值）
-        ProcessInstance problem = runtimeService.startProcessInstanceByKey("problem");
+        ProcessInstance problem = runtimeService.startProcessInstanceByKey("problem2");
 
         log.info(problem.getDeploymentId()+"--流程部署的ID");// null
         log.info(problem.getProcessDefinitionId()+"--流程定义的ID");// problem:1:4  对应ACT_RE_PROCDEF表中的ID_
